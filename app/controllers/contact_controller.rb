@@ -3,13 +3,8 @@ class ContactController < ApplicationController
     end
 
     def create 
-        puts "|+|------------------------|+|"
-        puts params[:email]
-        puts params[:message]
-        puts "|+|------------------------|+|"
-
+        ContactMailer.with(email: params[:email], message: params[:message]).contact_email.deliver_later
         flash[:notice] = "Contact us send"
-        flash[:alert] = "Contact us not send"
 
         redirect_to request.referrer || root_path
     end
