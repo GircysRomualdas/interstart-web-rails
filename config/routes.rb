@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   get "contact", to: "contact#index", as: :contact
   post "contact", to: "contact#create"
+
+  get "forum", to: "forum#index", as: :forum
 end
