@@ -9,5 +9,10 @@
                 <%= link_to "Forum", forum_path, class:"nav-link" %>
             </div>
         </div>
+
+        <% if user_signed_in? %>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+        <% end %>
+
     </div>
 </nav>

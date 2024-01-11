@@ -6,10 +6,12 @@
         </div> 
     </div>
 
-    <div class="row">
-        <div class="col text-end">
-            <%= button_to "delete", destroy_reply_path(reply.id), method: :delete, data: {turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
-        </div> 
-    </div>
+    <% if user_signed_in? %>
+        <div class="row">
+            <div class="col text-end">
+                <%= button_to "delete", destroy_reply_path(reply.id), method: :delete, data: {turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+            </div> 
+        </div>
+    <% end %>
     
 </div>

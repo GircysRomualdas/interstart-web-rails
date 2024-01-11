@@ -1,4 +1,6 @@
 class ForumController < ApplicationController  
+    before_action :authenticate_user!, except: [:index, :create_comment]
+
     def index 
         @pagy, @comments = pagy(Comment.all.order(created_at: :desc), items: 8)
         @comment = Comment.new

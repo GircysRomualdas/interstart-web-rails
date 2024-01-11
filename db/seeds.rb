@@ -16,3 +16,9 @@ if Comment.count < 100
         end
     end
 end
+
+user = User.where(email: "r2udis@gmail.com").first_or_initialize
+user.update!(
+    password: "password",
+    password_confirmation: "password"
+)
