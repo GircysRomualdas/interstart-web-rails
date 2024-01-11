@@ -1,6 +1,6 @@
 class ForumController < ApplicationController  
     def index 
-        @comments = Comment.all
+        @pagy, @comments = pagy(Comment.all.order('created_at DESC'))
         @comment = Comment.new
         @reply = Reply.new
     end

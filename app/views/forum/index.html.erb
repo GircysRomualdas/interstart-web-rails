@@ -6,10 +6,11 @@
         <%= render partial: 'forum/form_comment', locals: { comment: @comment } %>
     </div>
     
-
     <% @comments.each do |comment| %>
         <%= render partial: 'forum/comment', locals: { comment: comment, reply: @reply } %>
     <% end %>
+
+    <%== pagy_bootstrap_nav(@pagy) %>
 </div>
 
 <%= javascript_include_tag('controllers/reply_form_display.js') %>
