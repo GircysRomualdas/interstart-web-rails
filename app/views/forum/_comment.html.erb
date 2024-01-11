@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col-1 text-end"> 
-            <%= button_to "delete", destroy_comment_path(comment.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+            <%= button_to "delete", destroy_comment_path(comment.id), method: :delete, data: { turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
         </div>
     </div>
     

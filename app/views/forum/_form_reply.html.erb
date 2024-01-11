@@ -1,9 +1,9 @@
-<div >
+<div class="my-1" >
     <%= form_with model: reply, url: create_reply_path do |form| %>
         <input type="hidden" name="reply[comment_id]" value="<%= comment.id %>">
         <div>
-            <%= form.label :message, class: "form-label" %>
-            <%= form.text_area :message, class: "form-control" %>
+            <%#= form.label :message, class: "form-label" %>
+            <%= form.text_area :message, placeholder: "message text", class: "form-control" %>
         </div>
         <div class="pt-1">
             <%= form.submit "Reply", class: "btn btn-primary" %>
