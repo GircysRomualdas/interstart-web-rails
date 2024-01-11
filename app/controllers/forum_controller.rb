@@ -1,6 +1,6 @@
 class ForumController < ApplicationController  
     def index 
-        @pagy, @comments = pagy(Comment.all.order('created_at DESC'), items: 8)
+        @pagy, @comments = pagy(Comment.all.order(created_at: :desc), items: 8)
         @comment = Comment.new
         @reply = Reply.new
     end
@@ -35,6 +35,7 @@ class ForumController < ApplicationController
 
         if reply.save 
             flash[:notice] = "Reply saved"
+            ReplyMailer.with(comment: reply.comment, reply: reply).reply_email.deliver_later
         else
             flash[:alert] = "Reply not saved"
         end
