@@ -1,25 +1,33 @@
-<div class="ps-3 border-start border-3 rounded border-info mb-3">
+<div class="p-1 ps-3 border-start border-bottom border-3 rounded border-info mb-3 bg-body-tertiary">
     <div>
         <h6> <%= comment.email %> </h6>
         <p> <%= comment.message %> </p>
-        <span> <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %> </span>
-    </div>
-    
-    <div>
-        <a href="#" class="js-reply-form-display text-decoration-none">reply</a>
-        <div class="d-none">
-            <%= render partial: 'forum/form_reply', locals: { reply: reply, comment: comment } %>
+        <div class="row">
+            <div class="col text-end">
+                <span> <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %> </span>
+            </div> 
         </div>
     </div>
 
-    <% if comment.replies.any? %>
-        <div>
-            <a href="#" class="js-reply-display d-flex align-items-center justify-content-center fs-4 text-decoration-none bg-info-subtle rounded-circle" style="width: 1.5em; height: 1.5em;">&darr;</a>
-            <div>
-                <% comment.replies.each do |comment_reply| %>
-                    <%= render partial: 'forum/reply', locals: { reply: comment_reply } %>
-                <% end %>
+    <div class="row">
+        <div class="col">
+            <a href="#" class="js-reply-form-display btn btn-outline-secondary">reply</a>
+            <div class="d-none">
+                <%= render partial: 'forum/form_reply', locals: { reply: reply, comment: comment } %>
             </div>
+        </div>
+        <div class="col-1 text-end"> 
+            <%= button_to "delete", destroy_comment_path(comment.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        </div>
+    </div>
+    
+    
+    <% if comment.replies.any? %>
+        <a href="#" class="js-reply-display d-flex align-items-center justify-content-center fs-4 text-decoration-none bg-info-subtle rounded my-2" style="width: 1.3em; height: 1.3em;">&darr;</a>
+        <div>
+            <% comment.replies.each do |comment_reply| %>
+                <%= render partial: 'forum/reply', locals: { reply: comment_reply } %>
+            <% end %>
         </div>
     <% end %>
 </div>

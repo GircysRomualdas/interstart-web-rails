@@ -17,6 +17,19 @@ class ForumController < ApplicationController
         redirect_to request.referrer || root_path
     end
 
+    def destroy_comment 
+        @comment = Comment.find(params[:id])
+        @comment.destroy 
+        flash[:notice] = "Comment deleted"
+
+        redirect_to request.referrer || root_path
+
+    rescue ActiveRecord::RecordNotFound 
+        flash[:alert] = "Comment not found"
+
+        redirect_to request.referrer || root_path
+    end
+
     def create_reply 
         reply = Reply.new(reply_params)
 
@@ -25,6 +38,19 @@ class ForumController < ApplicationController
         else
             flash[:alert] = "Reply not saved"
         end
+
+        redirect_to request.referrer || root_path
+    end
+
+    def destroy_reply 
+        @reply = Reply.find(params[:id])
+        @reply.destroy 
+        flash[:notice] = "Reply deleted"
+
+        redirect_to request.referrer || root_path
+
+    rescue ActiveRecord::RecordNotFound 
+        flash[:alert] = "Reply not found"
 
         redirect_to request.referrer || root_path
     end
