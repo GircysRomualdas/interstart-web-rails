@@ -1,0 +1,25 @@
+<div class="ps-3 border-start border-3 rounded border-info mb-3">
+    <div>
+        <h6> <%= comment.email %> </h6>
+        <p> <%= comment.message %> </p>
+        <span> <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %> </span>
+    </div>
+    
+    <div>
+        <a href="#" class="js-reply-form-display text-decoration-none">reply</a>
+        <div class="d-none">
+            <%= render partial: 'forum/form_reply', locals: { reply: reply, comment: comment } %>
+        </div>
+    </div>
+
+    <% if comment.replies.any? %>
+        <div>
+            <a href="#" class="js-reply-display d-flex align-items-center justify-content-center fs-4 text-decoration-none bg-info-subtle rounded-circle" style="width: 1.5em; height: 1.5em;">&darr;</a>
+            <div>
+                <% comment.replies.each do |comment_reply| %>
+                    <%= render partial: 'forum/reply', locals: { reply: comment_reply } %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>
