@@ -1,5 +1,10 @@
 class ContactController < ApplicationController 
     def index 
+        set_meta_tags(
+            title: "Contact",
+            description: "Contact Page Description",
+            keywords: 'Contact Page Keywords'
+        )
     end
 
     def create 

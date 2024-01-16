@@ -72,3 +72,5 @@ end
 gem "pagy", "~> 6.3"
 
 gem "devise", "~> 4.9"
+
+gem "meta-tags", "~> 2.20"

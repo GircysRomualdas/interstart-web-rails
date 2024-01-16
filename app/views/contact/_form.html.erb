@@ -2,11 +2,11 @@
     <%= form_tag(contact_path) do %>
         <div>
             <%= label_tag(:email, "Email", class: "form-label") %>
-            <%= email_field(:email, "", class: "form-control") %>
+            <%= email_field(:email, "", class: "form-control", id: :email) %>
         </div>
         <div>
             <%= label_tag(:message, "Message", class: "form-label") %>
-            <%= text_area_tag(:message, "", class: "form-control") %>
+            <%= text_area_tag(:message, "", class: "form-control", id: :message) %>
         </div>
         <div class="pt-1">
             <%= submit_tag("Contact", class: "btn btn-primary") %>

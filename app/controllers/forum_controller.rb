@@ -5,6 +5,12 @@ class ForumController < ApplicationController
         @pagy, @comments = pagy(Comment.all.order(created_at: :desc), items: 8)
         @comment = Comment.new
         @reply = Reply.new
+
+        set_meta_tags(
+            title: "Forum",
+            description: "Forum Page Description",
+            keywords: 'Forum Page Keywords'
+        )
     end
 
     def create_comment 
